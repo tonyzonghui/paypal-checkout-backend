@@ -9,5 +9,6 @@
  */
 
 module.exports.routes = {
-  "POST /checkoutpaypal": "PaymentController.checkoutPaypal",
+  "POST /checkout-paypal": "PaymentController.checkoutPaypal",
+  "POST /create-payment": "PaymentController.createPayment",
 };

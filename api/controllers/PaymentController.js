@@ -8,6 +8,21 @@
 const PaypalService = require("../services/PaypalService");
 
 module.exports = {
+  createPayment(req, res) {
+    // call payment service to create payment on paypal
+    console.log(req.body);
+
+    const amount = req.body.data.amount;
+    const currency = req.body.data.currency;
+    PaypalService.createPayment(amount, currency, (error, result) => {
+      if (error) {
+        res.negotiate(error);
+      } else {
+        res.ok(result);
+      }
+    });
+  },
+
   checkoutPaypal(req, res) {
     console.log(req.body);
 
@@ -21,9 +36,9 @@ module.exports = {
       paymentID,
       paymentJson,
       payment,
-      (err, result) => {
-        if (err) {
-          res.negotiate(err);
+      (error, result) => {
+        if (error) {
+          res.negotiate(error);
         } else {
           res.ok(result);
         }

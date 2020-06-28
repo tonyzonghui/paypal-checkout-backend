@@ -2,14 +2,45 @@ const paypal = require("paypal-rest-sdk");
 const Payment = require("../models/Payment");
 
 paypal.configure({
-  mode: "sandbox",
-  client_id:
-    "AerndAFr7KTaC7BXhys-IpUzr-K27LJbhHm-K-pSxYXdNaq5JV878CTsFVicw7GwDZ0g-iSvhBelAnUE",
-  client_secret:
-    "ECBmsF-o8AQ6pRmqEz4p8JHvSMYFzICDAAp1cBx2mI-yTt5XLTH--uzVB5_1kJw6s1alAtgzw8-XmWWt",
+  mode: sails.config.paypal.mode,
+  client_id: sails.config.paypal.clientId,
+  client_secret: sails.config.paypal.clientSecret,
 });
 
 module.exports = {
+  createPayment(amount, currency, callback) {
+    let paymentJson = {
+      intent: "sale",
+      payer: {
+        payment_method: "paypal",
+      },
+      transactions: [
+        {
+          amount: {
+            total: amount,
+            currency: currency,
+          },
+        },
+      ],
+      redirect_urls: {
+        return_url: "http://localhost:8080",
+        cancel_url: "http://localhost:8080",
+      },
+    };
+    console.log(JSON.stringify(paymentJson));
+
+    paypal.payment.create(paymentJson, (error, response) => {
+      if (error) {
+        console.log("create payment error: ", JSON.stringify(error));
+        return callback(error);
+      } else {
+        console.log("create payment result: ", response);
+
+        return callback(null, { id: response.id });
+      }
+    });
+  },
+
   paypalPayment(paymentID, paymentJson, payment, callback) {
     paypal.payment.execute(paymentID, paymentJson, (error, paymentLog) => {
       if (error) {
