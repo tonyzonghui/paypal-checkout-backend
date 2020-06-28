@@ -32,7 +32,7 @@ module.exports = {
     const payment = {};
     payment.amount = req.body.data.amount;
     const paymentID = req.body.data.paymentID;
-    PaypalService.paypalPayment(
+    PaypalService.executePayment(
       paymentID,
       paymentJson,
       payment,

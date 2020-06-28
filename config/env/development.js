@@ -354,6 +354,6 @@ module.exports = {
       "AerndAFr7KTaC7BXhys-IpUzr-K27LJbhHm-K-pSxYXdNaq5JV878CTsFVicw7GwDZ0g-iSvhBelAnUE",
     clientSecret:
       "ECBmsF-o8AQ6pRmqEz4p8JHvSMYFzICDAAp1cBx2mI-yTt5XLTH--uzVB5_1kJw6s1alAtgzw8-XmWWt",
-    apiBaseUrl: "",
+    apiBaseUrl: "https://api.sandbox.paypal.com",
   },
 };
