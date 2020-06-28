@@ -1,26 +1,62 @@
-# backend
+# Paypal-checkout-backend
 
-a [Sails v1](https://sailsjs.com) application
+---
 
+This application is built with [Sails framework](https://sailsjs.com).
+The application provided APIs for paypal checkout using Paypal Order APIs.
+
+### Development Instruction
+
+**App Structure**
+
+```
+- api: api definition folder
+    - controllers: api request handler
+    - models: entity model definition. Used with ORM to handle data persistence.
+    - services: business logics
+    - helpers: helper functions. See Sails documentation for more detail
+    - common: reusable functions or components
+    - policies: Policies in Sails are versatile tools for authorization and access control
+- config
+    - env: configurations for different environments (development, production, etc.)
+    - locales: localization files
+    * routes.js: api routes definitions
+    * datastores.js: database configuration
+    * i18n.js: internationalization configuration
+    * security.js: security configurations like cors, csrf
+    ...
+```
+
+**Run Application**
+
+```
+sails lift
+```
+
+**Create New Api**
+
+```
+sails generate api [api_name]
+```
+
+This will generate a model and a controller for [api_name]
+
+### APIs
+
+Currently there are 2 APIs provided by this backend service:
+| method | path | description |
+| ---- | ---- | ---- |
+| POST | /checkout-paypal | create order |
+| POST | /create-payment" | capture order payments |
 
 ### Links
 
-+ [Sails framework documentation](https://sailsjs.com/get-started)
-+ [Version notes / upgrading](https://sailsjs.com/documentation/upgrading)
-+ [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
-+ [Community support options](https://sailsjs.com/support)
-+ [Professional / enterprise options](https://sailsjs.com/enterprise)
-
+- [Sails framework documentation](https://sailsjs.com/get-started)
+- [Version notes / upgrading](https://sailsjs.com/documentation/upgrading)
+- [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
+- [Community support options](https://sailsjs.com/support)
+- [Professional / enterprise options](https://sailsjs.com/enterprise)
 
 ### Version info
 
 This app was originally generated on Sat Jun 27 2020 21:41:33 GMT+0800 (Singapore Standard Time) using Sails v1.2.4.
-
-<!-- Internally, Sails used [`sails-generate@1.17.2`](https://github.com/balderdashy/sails-generate/tree/v1.17.2/lib/core-generators/new). -->
-
-
-
-<!--
-Note:  Generators are usually run using the globally-installed `sails` CLI (command-line interface).  This CLI version is _environment-specific_ rather than app-specific, thus over time, as a project's dependencies are upgraded or the project is worked on by different developers on different computers using different versions of Node.js, the Sails dependency in its package.json file may differ from the globally-installed Sails CLI release it was originally generated with.  (Be sure to always check out the relevant [upgrading guides](https://sailsjs.com/upgrading) before upgrading the version of Sails used by your app.  If you're stuck, [get help here](https://sailsjs.com/support).)
--->
-
