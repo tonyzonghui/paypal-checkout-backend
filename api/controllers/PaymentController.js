@@ -12,37 +12,38 @@ module.exports = {
     // call payment service to create payment on paypal
     console.log(req.body);
 
-    const amount = req.body.data.amount;
-    const currency = req.body.data.currency;
-    PaypalService.createPayment(amount, currency, (error, result) => {
-      if (error) {
-        res.negotiate(error);
-      } else {
-        res.ok(result);
-      }
-    });
-  },
-
-  checkoutPaypal(req, res) {
-    console.log(req.body);
-
-    let paymentJson = {
-      payer_id: req.body.data.payerID,
-    };
-    const payment = {};
-    payment.amount = req.body.data.amount;
-    const paymentID = req.body.data.paymentID;
-    PaypalService.paypalPayment(
-      paymentID,
-      paymentJson,
-      payment,
-      (error, result) => {
+    try {
+      const amount = req.body.data.amount;
+      const currency = req.body.data.currency;
+      PaypalService.createPayment(amount, currency, (error, result) => {
         if (error) {
           res.negotiate(error);
         } else {
           res.ok(result);
         }
-      }
-    );
+      });
+    } catch (error) {
+      console.log(error);
+
+      res.serverError();
+    }
+  },
+
+  checkoutPaypal(req, res) {
+    console.log(req.body);
+
+    try {
+      const orderID = req.body.orderID;
+      PaypalService.captureOrderPayment(orderID, (error, result) => {
+        if (error) {
+          res.negotiate(error);
+        } else {
+          res.ok(result);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      res.serverError();
+    }
   },
 };

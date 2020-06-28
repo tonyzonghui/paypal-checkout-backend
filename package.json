@@ -5,7 +5,9 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.2",
     "@sailshq/lodash": "^3.10.3",
+    "axios": "^0.19.2",
     "paypal-rest-sdk": "^1.8.1",
     "sails": "^1.2.4",
     "sails-hook-orm": "^2.1.1",
