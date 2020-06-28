@@ -30,6 +30,9 @@ The application provided APIs for paypal checkout using Paypal Order APIs.
 **Run Application**
 
 ```
+# install sails
+npm install sails -g
+# run app
 sails lift
 ```
 
