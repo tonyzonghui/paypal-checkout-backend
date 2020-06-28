@@ -54,7 +54,7 @@ module.exports = {
         payment.first_name = paymentLog.payer.payer_info.first_name;
         payment.last_name = paymentLog.payer.payer_info.last_name;
         console.log(payment);
-        callback(null, "done");
+        callback(null, payment);
         // Payment.create(payment).exec((err, result) => {
         //   callback(null, "done");
         // });
