@@ -1,4 +1,3 @@
-const axios = require("axios");
 const paypal = require("@paypal/checkout-server-sdk");
 const paypalClient = require("../commons/PaypalClient");
 
@@ -22,12 +21,10 @@ module.exports = {
       .execute(request)
       .then((order) => {
         console.log("order: ", order);
-
         return callback(null, { orderID: order.result.id });
       })
       .catch((error) => {
         console.log("error: ", error);
-
         return callback(error);
       });
   },

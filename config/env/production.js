@@ -223,10 +223,7 @@ module.exports = {
      * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
      *                                                                          *
      ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://example.com',
-    //   'https://staging.example.com',
-    // ],
+    onlyAllowOrigins: [],
     /***************************************************************************
      *                                                                          *
      * If you are deploying a cluster of multiple servers and/or processes,     *
@@ -347,5 +344,13 @@ module.exports = {
     // sails_custom__stripeSecret=sk_prod__fake_Nfgh82401348jaDa3lkZ0d9Hm
     // ```
     //--------------------------------------------------------------------------
+  },
+  paypal: {
+    mode: "sandbox",
+    clientId:
+      "AerndAFr7KTaC7BXhys-IpUzr-K27LJbhHm-K-pSxYXdNaq5JV878CTsFVicw7GwDZ0g-iSvhBelAnUE",
+    clientSecret:
+      "ECBmsF-o8AQ6pRmqEz4p8JHvSMYFzICDAAp1cBx2mI-yTt5XLTH--uzVB5_1kJw6s1alAtgzw8-XmWWt",
+    apiBaseUrl: "https://api.sandbox.paypal.com",
   },
 };
